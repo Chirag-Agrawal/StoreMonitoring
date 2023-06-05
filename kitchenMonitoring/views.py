@@ -113,8 +113,7 @@ def generate_report(request):
     report_id = str(uuid.uuid4())
     report = Report.objects.create(report_id=report_id, status='Running')
 
-    for store_id in store_ids[:10]:
-        print("processing", store_id)
+    for store_id in store_ids:
         store = Store.objects.get(store_id=store_id)
         store_hours = StoreHours.objects.filter(store=store)
 
@@ -226,12 +225,6 @@ def calculate_uptime(store, start_time, end_time, store_hours):
     while current_time < end_time:
         next_time = current_time + timedelta(hours=1)
 
-        # Check if store has store_hours entry for the current day
-        # business_hours = store_hours.filter(day_of_week=current_time.weekday()).first()
-
-        # if business_hours:
-        #     start_time_local = datetime.combine(current_time.date(), business_hours.start_time_local)
-        #     end_time_local = datetime.combine(current_time.date(), business_hours.end_time_local)
 
         business_hours = store_hours.filter(day_of_week=current_time.weekday()).first()
 
@@ -277,14 +270,6 @@ def calculate_uptime(store, start_time, end_time, store_hours):
     return uptime.total_seconds() / 60 , downtime.total_seconds() / 60
 
 
-
-
-# def calculate_downtime(store, start_time, end_time, store_hours):
-#     total_duration = (end_time - start_time).total_seconds() / 3600
-#     uptime = calculate_uptime(store, start_time, end_time, store_hours)
-#     downtime = total_duration - uptime
-
-#     return downtime
 
 
 def generate_csv(report):
