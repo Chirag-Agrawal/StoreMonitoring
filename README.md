@@ -2,6 +2,7 @@
 # StoreMonitoring
 
 StoreMonitoring is a Django-based microservice for monitoring the status and hours of operation of multiple stores. It provides functionality to upload CSV files containing store status, store hours, and store timezone data, which are then processed and stored in the database.
+<<<<<<< HEAD
 
 ## Features
 
