@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Store Monitoring</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            max-width: 800px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333333;
+        }
+
+        .form-group input[type="file"] {
+            padding: 10px;
+            width: 100%;
+        }
+
+        .form-group input[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        .form-group input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .data-descriptions {
+            margin-top: 40px;
+        }
+
+        .data-descriptions h2 {
+            color: #333333;
+            margin-bottom: 10px;
+        }
+
+        .data-descriptions ol {
+            color: #666666;
+            padding-left: 20px;
+        }
+
+        .data-descriptions ol li {
+            margin-bottom: 10px;
+        }
+
+        .data-descriptions a {
+            color: #4286f4;
+            text-decoration: none;
+        }
+
+        .data-descriptions a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Store Monitoring</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="csv-file">Upload CSV:</label>
+                <input type="file" name="file" id="csv-file" accept=".csv">
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Upload">
+            </div>
+        </form>
+        <div class="data-descriptions">
+            <h2>Data Descriptions:</h2>
+            <ol>
+                <li>
+                     The Store Status CSV file should have 3 columns (`store_id, timestamp_utc, status`) where status is active or inactive. All timestamps are in **UTC**.
+                    
+                </li>
+                <li>
+                   The Store hours csv should contain data `store_id, dayOfWeek(0=Monday, 6=Sunday), start_time_local, end_time_local`.
+                </li>
+                <li>
+                    The Store Timezone csv should contain `store_id, timezone_str`.
+                    
+                </li>
+            </ol>
+        </div>
+    </div>
+</body>
+</html>
