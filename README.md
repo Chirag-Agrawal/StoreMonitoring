@@ -67,17 +67,10 @@ StoreMonitoring is a Django-based microservice for monitoring the status and hou
    - To view a specific report, use the report ID in the URL.
    - Visit `http://localhost:8000/kitchens/get_report/{report_id}` to view the details of a report.
 
-## Contributing
-
-Contributions to StoreMonitoring are welcome! If you find any bugs, have suggestions for improvements, or would like to add new features, please open an issue or submit a pull request.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
 
 ## Acknowledgements
 
 - [Django](https://www.djangoproject.com/) - Web framework for Python
 - [Pandas](https://pandas.pydata.org/) - Data manipulation library in Python
 
-Feel free to customize this README file according to your project's specific details and requirements.
+
